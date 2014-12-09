@@ -1,17 +1,21 @@
+# This script DOES NOT save to png.
+# Call the plot_to_png("plot4") to generate the png
+
 plot4 <- function() {
+  # Script to load and prep data
   source("load_power_consumption.R")
   power <- load()
-  
+
   old.par <- par(no.readonly=T)
   par(cex=0.5, bg=NA, mfcol=c(2,2))
   
-  # Top left
+  # Top left plot
   with(power, plot(datetime, Global_active_power, 
                    type='l', 
                    xlab="",
                    ylab="Global Active Power"))
   
-  # Bottom left
+  # Bottom left plot
   with(power, plot(datetime, Sub_metering_1, type="l",
                    ylab="Energy sub metering", xlab=""))
   with(power, lines(datetime, Sub_metering_2, col="Red"))
@@ -20,10 +24,10 @@ plot4 <- function() {
          col=c("black", "red", "blue"), 
          legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   
-  # Top right
+  # Top right plot
   with(power, plot(datetime, Voltage, type="l"))
   
-  #Bottom right
+  #Bottom right plot
   with(power, plot(datetime, Global_reactive_power, type="l"))
   
   par(old.par)
