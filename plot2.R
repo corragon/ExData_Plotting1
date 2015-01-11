@@ -1,9 +1,10 @@
 ###################################################
-# This script DOES NOT save to png.
-# Call the plot_to_png("plot2") to generate the png
-#
-# Please see plot_to_png.R for more comments
+# plot2() creates the plot
+# generate_png() creates the png file
+# 
+# The png file is saved in the /figure directory
 ###################################################
+
 plot2 <- function() {
   # Script to load and prep data
   source("load_power_consumption.R")
@@ -14,3 +15,6 @@ plot2 <- function() {
                    xlab="",
                    ylab="Global Active Power (kilowatts)"))
 }
+
+source("generate_png.R")
+generate_png("plot2", plot2)

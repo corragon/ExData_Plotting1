@@ -1,9 +1,10 @@
 ###################################################
-# This script DOES NOT save to png.
-# Call the plot_to_png("plot2") to generate the png
-#
-# Please see plot_to_png.R for more comments
+# plot4() creates the plot
+# generate_png() creates the png file
+# 
+# The png file is saved in the /figure directory
 ###################################################
+
 plot4 <- function() {
   # Script to load and prep data
   source("load_power_consumption.R")
@@ -36,3 +37,6 @@ plot4 <- function() {
   par(old.par)
   
 }
+
+source("generate_png.R")
+generate_png("plot4", plot4)

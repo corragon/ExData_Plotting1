@@ -1,9 +1,10 @@
 ###################################################
-# This script DOES NOT save to png.
-# Call the plot_to_png("plot2") to generate the png
-#
-# Please see plot_to_png.R for more comments
+# plot3() creates the plot
+# generate_png() creates the png file
+# 
+# The png file is saved in the /figure directory
 ###################################################
+
 plot3 <- function() {
   # Script to load and prep data
   source("load_power_consumption.R")
@@ -17,3 +18,6 @@ plot3 <- function() {
          col=c("black", "red", "blue"), 
          legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 }
+
+source("generate_png.R")
+generate_png("plot3", plot3)

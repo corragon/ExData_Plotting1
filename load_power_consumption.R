@@ -9,12 +9,11 @@ load <- function () {
                  nrows=2880, 
                  data.table=F)
   # Using skip with fread() means you lose the headers.
-  # Get and set header names
-  powerNames <- fread("household_power_consumption.txt", header=T, nrows=0)
-  names(power) <- names(powerNames)
-  names(power)[1] <- "datetime"
+  # Get and set header names now
+  names(power) <- names(fread("household_power_consumption.txt", header=T, nrows=0))
+
   # Combine and cast original Date and Time fields into one datetime column
-  power$datetime <- strptime(paste(power$datetime, power$Time), "%d/%m/%Y %H:%M:%S")
-  power <- subset(power, select = -Time)
+  power$datetime <- strptime(paste(power$Date, power$Time), "%d/%m/%Y %H:%M:%S")
+  power <- subset(power, select = -c(Date,Time))
   power
 }
